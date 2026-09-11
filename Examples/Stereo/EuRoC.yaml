@@ -24,7 +24,7 @@ Camera1.fx: 458.654
 Camera1.fy: 457.296
 Camera1.cx: 367.215
 Camera1.cy: 248.375
-
+Camera.bf: 47.90639384423901   # (baseline 0.1101 m × fx)
 Camera1.k1: -0.28340811
 Camera1.k2: 0.07395907
 Camera1.p1: 0.00019359

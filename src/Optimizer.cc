@@ -459,7 +459,7 @@ void Optimizer::FullInertialBA(Map *pMap, int its, const bool bFixLocal, const l
         VG->setId(4*maxKFid+2);
         VG->setFixed(false);
         optimizer.addVertex(VG);
-        VertexAccBias* VA = new VertexAccBias(pIncKF);
+        VertexAccBias* VA = new VertexAccBias();
         VA->setId(4*maxKFid+3);
         VA->setFixed(false);
         optimizer.addVertex(VA);
