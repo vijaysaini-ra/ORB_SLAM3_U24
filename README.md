@@ -277,8 +277,20 @@ For ROS 2 Jazzy installation, workspace setup, building the ROS 2 package, confi
 
 https://github.com/vijaysaini-ra/ORB_SLAM3_ROS2_Jazzy
 
-# 8. Running time analysis
+# 8. Docker Build
+
+A Dockerfile is provided to build ORB-SLAM3_U24 in a clean Ubuntu 24.04 environment.
+
+## Build the Docker image
+
+From the repository root:
+
+```bash
+docker build -t orb-slam3-u24 .
+```
+
+# 9. Running time analysis
 A flag in `include\Config.h` activates time measurements. It is necessary to uncomment the line `#define REGISTER_TIMES` to obtain the time stats of one execution which is shown at the terminal and stored in a text file(`ExecTimeMean.txt`).
 
-# 9. Calibration
+# 10. Calibration
 You can find a tutorial for visual-inertial calibration and a detailed description of the contents of valid configuration files at  `Calibration_Tutorial.pdf`

@@ -30,7 +30,9 @@ echo "Configuring and building Thirdparty/Sophus ..."
 cd ../../Sophus
 mkdir -p build
 cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_TESTS=OFF
 make -j4
 
 echo ""
