@@ -1,0 +1,14 @@
+.git
+.gitmodules
+
+build/
+Thirdparty/DBoW2/build/
+Thirdparty/g2o/build/
+Thirdparty/Sophus/build/
+
+
+evaluation/*.bak
+
+*.o
+*.so
+*.a
