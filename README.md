@@ -24,45 +24,112 @@ This modified repository retains the licensing terms of the original ORB-SLAM3 p
 
 For academic publications and citation information related to ORB-SLAM3, please refer to the original project repository and its associated publications.
 
+## Ubuntu 24.04 Modifications
+
+This repository contains modifications to the original ORB-SLAM3 project for building and running it on **Ubuntu 24.04**.
+
+### Build and Compatibility Changes
+
+The following changes were made to improve compatibility and build stability on the tested Ubuntu 24.04 environment:
+
+- Updated the project configuration to use the **C++14** standard.
+- Added `-Wno-deprecated-declarations` to handle deprecated-declaration warnings from the compiler and dependencies.
+- Modified the `Optimizer` implementation to address compatibility with the dependency versions used in the Ubuntu 24.04 environment.
+- Limited parallel compilation to **4 jobs (`make -j4`)** in the build scripts to reduce build resource usage.
+- Updated the Pangolin configuration used by the build process for Ubuntu 24.04 compatibility.
+
+### Configuration and Example Changes
+
+Additional configuration changes were made for the camera and dataset configurations used during testing:
+
+- Updated the **TUM-VI** camera resolution and ORB feature extraction thresholds.
+- Updated the **TUM1** camera resolution.
+- Added the `Camera.bf` parameter to the **EuRoC stereo configuration**.
+- Enabled the Pangolin viewer in the EuRoC monocular example used during testing.
+
+### Additional Files and Tools
+
+The repository also includes:
+
+- Helper scripts for running selected EuRoC examples.
+- Standalone vocabulary conversion utilities under the `tools/` directory.
+- The ORB vocabulary file managed using **Git LFS**.
+- Timing data used by the EuRoC testing scripts.
+
+
 
 # 2. Prerequisites
-We have tested the library in **Ubuntu 16.04** and **18.04**, but it should be easy to compile in other platforms. A powerful computer (e.g. i7) will ensure real-time performance and provide more stable and accurate results.
 
-## C++11 or C++0x Compiler
-We use the new thread and chrono functionalities of C++11.
+This version of ORB-SLAM3_U24 has been adapted and tested on **Ubuntu 24.04**.
+
+A reasonably powerful computer is recommended for real-time performance, particularly when running visual-inertial or stereo configurations.
+
+## Operating System
+
+- **Ubuntu 24.04 (Noble Numbat)**
+
+## C++ Compiler
+
+This version of ORB-SLAM3_U24 has been successfully built and tested with **GCC/G++ 11.5.0** on Ubuntu 24.04.
+
+The project retains the original ORB-SLAM3 C++11 compiler compatibility configuration.
 
 ## Pangolin
-We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization and user interface. Dowload and install instructions can be found at: https://github.com/stevenlovegrove/Pangolin.
+
+We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization and user interface.
+
+This version of ORB-SLAM3_U24 has been tested with **Pangolin v0.9.4**. For compatibility and reproducibility, it is recommended to use **Pangolin v0.9.4**.
+
+Please download and install **Pangolin v0.9.4** from the official Pangolin repository:
+
+https://github.com/stevenlovegrove/Pangolin
 
 ## OpenCV
-We use [OpenCV](http://opencv.org) to manipulate images and features. Dowload and install instructions can be found at: http://opencv.org. **Required at leat 3.0. Tested with OpenCV 3.2.0 and 4.4.0**.
+
+We use [OpenCV](https://opencv.org/) for image processing and feature extraction.
+
+This version of ORB-SLAM3_U24 has been tested with **OpenCV 4.6.0** on Ubuntu 24.04.
+
+**OpenCV 4.6.0 is recommended** for building this version on Ubuntu 24.04.
 
 ## Eigen3
-Required by g2o (see below). Download and install instructions can be found at: http://eigen.tuxfamily.org. **Required at least 3.1.0**.
 
-## DBoW2 and g2o (Included in Thirdparty folder)
-We use modified versions of the [DBoW2](https://github.com/dorian3d/DBoW2) library to perform place recognition and [g2o](https://github.com/RainerKuemmerle/g2o) library to perform non-linear optimizations. Both modified libraries (which are BSD) are included in the *Thirdparty* folder.
+Eigen3 is required by **g2o** and is used by ORB-SLAM3 for linear algebra operations.
+
+This version of ORB-SLAM3_U24 has been tested with **Eigen3 3.4.0** on Ubuntu 24.04.
+
+**Eigen3 3.4.0 is recommended** for building this version on Ubuntu 24.04.
+
+## DBoW2 and g2o
+
+ORB-SLAM3 uses **DBoW2** for place recognition and **g2o** for non-linear optimization.
+
+Modified versions of both libraries are included in the `Thirdparty/` directory of this repository, so they do not need to be downloaded separately.
+
+The included libraries are built automatically as part of the ORB-SLAM3 build process.
 
 ## Python
-Required to calculate the alignment of the trajectory with the ground truth. **Required Numpy module**.
 
-* (win) http://www.python.org/downloads/windows
-* (deb) `sudo apt install libpython2.7-dev`
-* (mac) preinstalled with osx
+Python is used for trajectory evaluation and alignment with the ground-truth trajectory.
 
-## ROS (optional)
+This version of ORB-SLAM3_U24 has been tested with **Python 3.12** on Ubuntu 24.04.
 
-We provide some examples to process input of a monocular, monocular-inertial, stereo, stereo-inertial or RGB-D camera using ROS. Building these examples is optional. These have been tested with ROS Melodic under Ubuntu 18.04.
+The **NumPy** Python package is required for the trajectory evaluation tools.
+
+**Python 3.12 with NumPy 1.26.4 is recommended** for the tested Ubuntu 24.04 environment.
+
+
 
 # 3. Building ORB-SLAM3 library and examples
 
-Clone the repository:
-```
-git clone https://github.com/UZ-SLAMLab/ORB_SLAM3.git ORB_SLAM3
+Clone the ORB-SLAM3_U24 repository:
+
+```bash
+git clone https://github.com/vijaysaini-ra/ORB_SLAM3_U24.git ORB_SLAM3
 ```
 
 We provide a script `build.sh` to build the *Thirdparty* libraries and *ORB-SLAM3*. Please make sure you have installed all required dependencies (see section 2). Execute:
-```
+```bash
 cd ORB_SLAM3
 chmod +x build.sh
 ./build.sh
